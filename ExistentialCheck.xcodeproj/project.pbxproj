@@ -9,21 +9,24 @@
 /* Begin PBXBuildFile section */
 		42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1028D765B8007035C0 /* AppDelegate.swift */; };
 		42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1228D765B8007035C0 /* SceneDelegate.swift */; };
-		42314C1528D765B8007035C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1428D765B8007035C0 /* ViewController.swift */; };
+		42314C1528D765B8007035C0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1428D765B8007035C0 /* StartController.swift */; };
 		42314C1828D765B8007035C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42314C1628D765B8007035C0 /* Main.storyboard */; };
 		42314C1A28D765BB007035C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42314C1928D765BB007035C0 /* Assets.xcassets */; };
 		42314C1D28D765BB007035C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42314C1B28D765BB007035C0 /* LaunchScreen.storyboard */; };
+		42314C2628D78FE5007035C0 /* Lumina in Frameworks */ = {isa = PBXBuildFile; productRef = 42314C2528D78FE5007035C0 /* Lumina */; };
+		42314C2828D89B59007035C0 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C2728D89B59007035C0 /* ResultScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42314C0D28D765B8007035C0 /* ExistentialCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExistentialCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42314C1028D765B8007035C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42314C1228D765B8007035C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		42314C1428D765B8007035C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42314C1428D765B8007035C0 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		42314C1728D765B8007035C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42314C1928D765BB007035C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42314C1C28D765BB007035C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42314C1E28D765BB007035C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42314C2728D89B59007035C0 /* ResultScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42314C2628D78FE5007035C0 /* Lumina in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +62,8 @@
 			children = (
 				42314C1028D765B8007035C0 /* AppDelegate.swift */,
 				42314C1228D765B8007035C0 /* SceneDelegate.swift */,
-				42314C1428D765B8007035C0 /* ViewController.swift */,
+				42314C1428D765B8007035C0 /* StartController.swift */,
+				42314C2728D89B59007035C0 /* ResultScene.swift */,
 				42314C1628D765B8007035C0 /* Main.storyboard */,
 				42314C1928D765BB007035C0 /* Assets.xcassets */,
 				42314C1B28D765BB007035C0 /* LaunchScreen.storyboard */,
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = ExistentialCheck;
+			packageProductDependencies = (
+				42314C2528D78FE5007035C0 /* Lumina */,
+			);
 			productName = ExistentialCheck;
 			productReference = 42314C0D28D765B8007035C0 /* ExistentialCheck.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 42314C0428D765B8007035C0;
+			packageReferences = (
+				42314C2428D78FE5007035C0 /* XCRemoteSwiftPackageReference "Lumina" */,
+			);
 			productRefGroup = 42314C0E28D765B8007035C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42314C1528D765B8007035C0 /* ViewController.swift in Sources */,
+				42314C1528D765B8007035C0 /* StartController.swift in Sources */,
+				42314C2828D89B59007035C0 /* ResultScene.swift in Sources */,
 				42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */,
 				42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */,
 			);
@@ -290,6 +302,8 @@
 				DEVELOPMENT_TEAM = NES4E5L6E8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExistentialCheck/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app requires access to the microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,6 +332,8 @@
 				DEVELOPMENT_TEAM = NES4E5L6E8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExistentialCheck/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app requires access to the microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -358,6 +374,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		42314C2428D78FE5007035C0 /* XCRemoteSwiftPackageReference "Lumina" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dokun1/Lumina.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		42314C2528D78FE5007035C0 /* Lumina */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42314C2428D78FE5007035C0 /* XCRemoteSwiftPackageReference "Lumina" */;
+			productName = Lumina;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 42314C0528D765B8007035C0 /* Project object */;
 }
