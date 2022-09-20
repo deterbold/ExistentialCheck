@@ -308,6 +308,7 @@
 				INFOPLIST_FILE = ExistentialCheck/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app requires access to the microphone";
+				INFOPLIST_KEY_NSMotionUsageDescription = "The camera uses the microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -338,6 +339,7 @@
 				INFOPLIST_FILE = ExistentialCheck/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires access to the camera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app requires access to the microphone";
+				INFOPLIST_KEY_NSMotionUsageDescription = "The camera uses the microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
