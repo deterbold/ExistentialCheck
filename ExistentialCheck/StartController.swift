@@ -7,169 +7,106 @@
 
 import UIKit
 import AVKit
-import CoreML
 import Lumina
-import Vision
 
 class StartController: UIViewController
 {
-    let camera = LuminaViewController()
-
-    @IBOutlet weak var imageView: UIImageView!
     
-    var image: UIImage?
-    var livePhotoURL: URL?
-    var showingDepth: Bool = false
-    var position: CameraPosition = .back
-    private var _depthData: Any?
     
-    var model: VNCoreMLModel?
+    @IBOutlet weak var instructionsLabel: UILabel!
     
-    @IBOutlet weak var modelLabel: UILabel!
-    
-//    private lazy var classificationRequest: VNCoreMLRequest =
-//    {
-//      do {
-//        // 2
-//          switch creativeMode
-//          {
-//          case 0:
-//              model = try VNCoreMLModel(for: prototype_taste().model)
-//          case 1:
-//              model = try VNCoreMLModel(for: Tastegram_Hard().model)
-//          case 2:
-//              model = try VNCoreMLModel(for: Tastegram_Extremes().model)
-//          case 3:
-//              model = try VNCoreMLModel(for: Tastegram_Influencer().model)
-//          default:
-//              model = try VNCoreMLModel(for: prototype_taste().model)
-//          }
-////        //let model = try VNCoreMLModel(for: prototype_taste().model)
-////          if creativeMode == 0
-////          {
-////              model = try VNCoreMLModel(for: Tastegram_Hard().model)
-////          }
-//          // 3
-//          let request = VNCoreMLRequest(model: model!) { request, _ in
-//            if let classifications =
-//              request.results as? [VNClassificationObservation] {
-//              print("Classification results: \(classifications)")
-//                print(classifications.first!.identifier as String as Any)
-//                print(request.results?.first?.confidence as Any)
-//                let veredict = classifications.first!.identifier as String
-//                if veredict == "Good"
-//                {
-//                    print("good picture")
-//                    self.sendPicture()
-//
-//                }
-//                else if veredict == "Bad"
-//                {
-//                    print("bad picture")
-//                    self.sendText()
-//                }
-//
-//            }
-//        }
-//        // 4
-//        request.imageCropAndScaleOption = .centerCrop
-//        return request
-//      } catch {
-//        // 5
-//        fatalError("Failed to load Vision ML model: \(error)")
-//      }
-//    }()
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        self.imageView.image = image
-    }
+    var labelText = "Here I write the point of the app"
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        modelLabel.font = UIFont(name: "Futura Medium", size: 18)
-        modelLabel.adjustsFontSizeToFitWidth = true
-        modelLabel.allowsDefaultTighteningForTruncation = true
-        modelLabel.numberOfLines = 0
-        modelLabel.textAlignment = .center
-        
-
         // Do any additional setup after loading the view.
+        instructionsLabel.font = UIFont(name: "Futura Medium", size: 28)
+        instructionsLabel.adjustsFontSizeToFitWidth = true
+        instructionsLabel.allowsDefaultTighteningForTruncation = true
+        instructionsLabel.numberOfLines = 0
+        instructionsLabel.textAlignment = .center
+        instructionsLabel.text = labelText
+        
     }
     
-    @IBAction func regretButton(_ sender: Any)
-    {
-        //performSegue(withIdentifier: "regretAndReturn", sender: nil)
-        sendRegretText()
-    }
-    
-    @IBAction func judgePicture(_ sender: Any)
-    {
-        classifyImage(image!)
-    }
-    
-    func classifyImage(_ image: UIImage) {
-      // 1
-      guard let orientation = CGImagePropertyOrientation(
-        rawValue: UInt32(image.imageOrientation.rawValue)) else {
-        return
-      }
-      guard let ciImage = CIImage(image: image) else {
-        fatalError("Unable to create \(CIImage.self) from \(image).")
-      }
-      // 2
-      DispatchQueue.global(qos: .userInitiated).async {
-        let handler =
-          VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
-        do {
-          try handler.perform([self.classificationRequest])
-        } catch {
-          print("Failed to perform classification.\n\(error.localizedDescription)")
-        }
-      }
-    }
-    
-    func sendPicture()
-    {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "sucessControllerSegue", sender: self)
 
-        }
-    }
-    
-    func sendText()
+    @IBAction func cameraButtonTapped(_ sender: Any)
     {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "failureSegue", sender: self)
-        }
-    }
-    
-    func sendRegretText()
-    {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "regretAndReturn", sender: self)
-        }
+        //code for setting up the camera and presenting the view goes here.
+        //creating the camera view controller
+        let camera = LuminaViewController()
+        camera.delegate = self
+        
+        //setup for the camera goes here
+        
+        //presenting the camera view
+        camera.modalPresentationStyle = .fullScreen
+        present(camera, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "sucessControllerSegue" {
-            let dvc = segue.destination as! SuccessController
-            dvc.image = self.image
-        }
-        
-        if segue.identifier == "failureSegue" {
-            let dvc = segue.destination as! IntroController
-            dvc.labelText = "That was Not a Good Picture. Try Again"
-        }
-        
-        if segue.identifier == "regretAndReturn"
-        {
-            let dvc = segue.destination as! IntroController
-            dvc.labelText = "let the AI decide"
+      if segue.identifier == "presentCameraSegue"{
+        guard let controller = segue.destination as? CameraController else { return }
+        if let map = sender as? [String: Any] {
+          controller.image = map["stillImage"] as? UIImage
+          controller.livePhotoURL = map["livePhotoURL"] as? URL
+          guard let positionBool = map["isPhotoSelfie"] as? Bool else { return }
+          controller.position = positionBool ? .front : .back
+        } else { return }
+      }
+    }
+}
+
+extension StartController: LuminaDelegate
+{
+    func captured(stillImage: UIImage, livePhotoAt: URL?, depthData: Any?, from controller: LuminaViewController) {
+        controller.dismiss(animated: true) {
+            self.performSegue(withIdentifier: "presentCameraSegue", sender: ["stillImage": stillImage, "livePhotoURL": livePhotoAt as Any, "depthData": depthData as Any, "isPhotoSelfie": controller.position == .front ? true : false])
         }
     }
+
+    
+
+    func detected(metadata: [Any], from controller: LuminaViewController) {
+        print(metadata)
+    }
+    
+    func dismissed(controller: LuminaViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CVPixelBuffer
+{
+  func normalizedImage(with position: CameraPosition) -> UIImage? {
+    let ciImage = CIImage(cvPixelBuffer: self)
+    let context = CIContext(options: nil)
+    if let cgImage = context.createCGImage(ciImage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(self), height: CVPixelBufferGetHeight(self))) {
+      return UIImage(cgImage: cgImage, scale: 1.0, orientation: getImageOrientation(with: position))
+    } else {
+      return nil
+    }
+  }
+
+  private func getImageOrientation(with position: CameraPosition) -> UIImage.Orientation {
+    let orientation = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.windowScene?.interfaceOrientation ?? .portrait
+    switch orientation {
+      case .landscapeLeft:
+        return position == .back ? .down : .upMirrored
+      case .landscapeRight:
+        return position == .back ? .up : .downMirrored
+      case .portraitUpsideDown:
+        return position == .back ? .left : .rightMirrored
+      case .portrait:
+        return position == .back ? .right : .leftMirrored
+      case .unknown:
+        return position == .back ? .right : .leftMirrored
+      @unknown default:
+        return position == .back ? .right : .leftMirrored
+    }
+  }
+    
 }
 

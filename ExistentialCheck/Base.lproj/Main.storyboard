@@ -16,30 +16,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-CG-KYv">
-                                <rect key="frame" x="0.0" y="47" width="390" height="643"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORO-op-Cvd">
+                                <rect key="frame" x="62" y="149" width="267" height="243"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVL-kL-gQo">
-                                <rect key="frame" x="158" y="727" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <segue destination="eI8-NB-BHP" kind="presentation" identifier="showTheResultSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="RGD-43-PLU"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-fA-4Zh">
+                                <rect key="frame" x="0.0" y="736" width="390" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="hrq-p6-dAA"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Cqv-Fm-c3n"/>
+                                    <barButtonItem title="About" id="QQL-iG-gQO">
+                                        <connections>
+                                            <segue destination="eI8-NB-BHP" kind="presentation" identifier="presentAboutSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="8wl-Vb-P1f"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="fDu-xv-Uzl"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="o5L-YG-0C6"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="w7b-Mx-cVz"/>
+                                    <barButtonItem title="Item" image="camera.shutter.button" catalog="system" id="nfS-nG-lbE">
+                                        <connections>
+                                            <segue destination="m5g-PB-JWV" kind="presentation" identifier="presentCameraSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="uVm-Yl-WEg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="nys-NH-uDP"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="eA4-WQ-OQj"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="CXb-CG-KYv" id="kdm-Gw-v6M"/>
+                        <outlet property="instructionsLabel" destination="ORO-op-Cvd" id="imw-C1-sMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686" y="-38"/>
+            <point key="canvasLocation" x="-686.15384615384608" y="-38.388625592417057"/>
+        </scene>
+        <!--Camera Controller-->
+        <scene sceneID="KpI-xA-YpI">
+            <objects>
+                <viewController id="m5g-PB-JWV" customClass="CameraController" customModule="ExistentialCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mov-xc-oEw">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpA-Jc-WWn">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="D6c-ca-cng"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="bpA-Jc-WWn" id="Jvw-lr-xon"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSq-Gb-Jz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-686.15384615384608" y="948.34123222748815"/>
         </scene>
         <!--Result Scene-->
         <scene sceneID="UkN-Ea-vuz">
@@ -49,24 +90,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yj2-bR-aht">
-                                <rect key="frame" x="116" y="357" width="159" height="131"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Mq-vlU">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l1d-gC-j9H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="tastyImage" destination="B7l-Mq-vlU" id="X79-iO-JnU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfd-NQ-HzV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="-38"/>
+            <point key="canvasLocation" x="773.84615384615381" y="-38.388625592417057"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera.shutter.button" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

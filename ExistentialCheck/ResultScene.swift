@@ -7,23 +7,39 @@
 
 import UIKit
 
-class ResultScene: UIViewController {
+class ResultScene: UIViewController
+{
+    
+    @IBOutlet weak var tastyImage: UIImageView!
+    
+    var image: UIImage?
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        tastyImage.image = image
+        
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //https://stackoverflow.com/questions/35931946/basic-example-for-sharing-text-or-image-with-uiactivityviewcontroller-in-swift
+    
+    @IBAction func shareButton(_ sender: Any)
+    {
+        // image to share
+        //let image = UIImage(named: "Image")
+               
+        // set up activity view controller
+        let imageToShare = [ image! ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+               
+        // exclude some activity types from the list (optional)
+        //activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+               
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
     }
-    */
-
 }

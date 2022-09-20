@@ -15,6 +15,7 @@
 		42314C1D28D765BB007035C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42314C1B28D765BB007035C0 /* LaunchScreen.storyboard */; };
 		42314C2628D78FE5007035C0 /* Lumina in Frameworks */ = {isa = PBXBuildFile; productRef = 42314C2528D78FE5007035C0 /* Lumina */; };
 		42314C2828D89B59007035C0 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C2728D89B59007035C0 /* ResultScene.swift */; };
+		42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C2D28D9FE55007035C0 /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		42314C1C28D765BB007035C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42314C1E28D765BB007035C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42314C2728D89B59007035C0 /* ResultScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
+		42314C2D28D9FE55007035C0 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				42314C1028D765B8007035C0 /* AppDelegate.swift */,
 				42314C1228D765B8007035C0 /* SceneDelegate.swift */,
 				42314C1428D765B8007035C0 /* StartController.swift */,
+				42314C2D28D9FE55007035C0 /* CameraController.swift */,
 				42314C2728D89B59007035C0 /* ResultScene.swift */,
 				42314C1628D765B8007035C0 /* Main.storyboard */,
 				42314C1928D765BB007035C0 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				42314C2828D89B59007035C0 /* ResultScene.swift in Sources */,
 				42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */,
 				42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */,
+				42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
