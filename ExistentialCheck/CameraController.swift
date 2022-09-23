@@ -86,6 +86,7 @@ class CameraController: UIViewController
     {
         super.viewDidLoad()
         
+        print("Camera")
     }
     
     
@@ -114,14 +115,14 @@ class CameraController: UIViewController
     func sendPicture()
     {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "sucessControllerSegue", sender: self)
+            self.performSegue(withIdentifier: "presentResultSegue", sender: self)
 
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "sucessControllerSegue" {
+        if segue.identifier == "presentResultSegue" {
             let dvc = segue.destination as! ResultScene
             dvc.image = self.image
         }

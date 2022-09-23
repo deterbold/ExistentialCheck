@@ -19,6 +19,7 @@ class StartController: UIViewController
     
     override func viewDidLoad()
     {
+        print("Start Controller")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         instructionsLabel.font = UIFont(name: "Futura Medium", size: 28)

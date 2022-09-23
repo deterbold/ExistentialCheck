@@ -17,6 +17,7 @@ class ResultScene: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print("Result Controller")
         tastyImage.image = image
         
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)

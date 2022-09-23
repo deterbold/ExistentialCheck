@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4219EC2228DE4823003828F5 /* About Controller Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4219EC2128DE4822003828F5 /* About Controller Scene.swift */; };
 		42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1028D765B8007035C0 /* AppDelegate.swift */; };
 		42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1228D765B8007035C0 /* SceneDelegate.swift */; };
 		42314C1528D765B8007035C0 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C1428D765B8007035C0 /* StartController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4219EC2128DE4822003828F5 /* About Controller Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "About Controller Scene.swift"; sourceTree = "<group>"; };
 		42314C0D28D765B8007035C0 /* ExistentialCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExistentialCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42314C1028D765B8007035C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42314C1228D765B8007035C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				42314C1228D765B8007035C0 /* SceneDelegate.swift */,
 				42314C1428D765B8007035C0 /* StartController.swift */,
 				42314C2D28D9FE55007035C0 /* CameraController.swift */,
+				4219EC2128DE4822003828F5 /* About Controller Scene.swift */,
 				42314C2728D89B59007035C0 /* ResultScene.swift */,
 				42314C1628D765B8007035C0 /* Main.storyboard */,
 				42314C1928D765BB007035C0 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 			files = (
 				42314C1528D765B8007035C0 /* StartController.swift in Sources */,
 				42314C2828D89B59007035C0 /* ResultScene.swift in Sources */,
+				4219EC2228DE4823003828F5 /* About Controller Scene.swift in Sources */,
 				42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */,
 				42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */,
 				42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */,
