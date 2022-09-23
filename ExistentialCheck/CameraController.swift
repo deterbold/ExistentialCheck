@@ -80,7 +80,6 @@ class CameraController: UIViewController
     override func viewWillAppear(_ animated: Bool)
     {
         self.imageView.image = image
-        print("we have arrived")
     }
     
     override func viewDidLoad()

@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-fA-4Zh">
-                                <rect key="frame" x="0.0" y="736" width="390" height="44"/>
+                                <rect key="frame" x="-1" y="735" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="hrq-p6-dAA"/>
@@ -37,9 +37,9 @@
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="fDu-xv-Uzl"/>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="o5L-YG-0C6"/>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="w7b-Mx-cVz"/>
-                                    <barButtonItem title="Item" image="camera.shutter.button" catalog="system" id="nfS-nG-lbE">
+                                    <barButtonItem title="CameraButton" image="camera.shutter.button" catalog="system" id="nfS-nG-lbE">
                                         <connections>
-                                            <segue destination="m5g-PB-JWV" kind="presentation" identifier="presentCameraSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="uVm-Yl-WEg"/>
+                                            <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="etO-h7-s7i"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="nys-NH-uDP"/>
@@ -52,6 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="instructionsLabel" destination="ORO-op-Cvd" id="imw-C1-sMu"/>
+                        <segue destination="m5g-PB-JWV" kind="presentation" identifier="presentCameraSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ods-RT-vtf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,13 +67,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpA-Jc-WWn">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqp-CY-1me">
+                                <rect key="frame" x="147" y="745" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpA-Jc-WWn">
+                                <rect key="frame" x="0.0" y="134" width="390" height="576"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="D6c-ca-cng"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hqp-CY-1me" firstAttribute="centerX" secondItem="bpA-Jc-WWn" secondAttribute="centerX" id="7WX-Ou-A0X"/>
+                            <constraint firstItem="bpA-Jc-WWn" firstAttribute="leading" secondItem="D6c-ca-cng" secondAttribute="leading" id="8OM-SJ-roB"/>
+                            <constraint firstItem="D6c-ca-cng" firstAttribute="bottom" secondItem="hqp-CY-1me" secondAttribute="bottom" constant="44" id="G9F-l3-qi7"/>
+                            <constraint firstItem="bpA-Jc-WWn" firstAttribute="centerY" secondItem="Mov-xc-oEw" secondAttribute="centerY" id="KVT-pr-G2e"/>
+                            <constraint firstItem="hqp-CY-1me" firstAttribute="top" secondItem="bpA-Jc-WWn" secondAttribute="bottom" constant="35" id="nSu-sb-Twu"/>
+                            <constraint firstItem="hqp-CY-1me" firstAttribute="centerX" secondItem="Mov-xc-oEw" secondAttribute="centerX" id="uY8-H4-WCs"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="bpA-Jc-WWn" id="Jvw-lr-xon"/>
