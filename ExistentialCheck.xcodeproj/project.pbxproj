@@ -17,6 +17,10 @@
 		42314C2628D78FE5007035C0 /* Lumina in Frameworks */ = {isa = PBXBuildFile; productRef = 42314C2528D78FE5007035C0 /* Lumina */; settings = {ATTRIBUTES = (Required, ); }; };
 		42314C2828D89B59007035C0 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C2728D89B59007035C0 /* ResultScene.swift */; };
 		42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42314C2D28D9FE55007035C0 /* CameraController.swift */; };
+		42DDBB9B28F8314000F4777A /* TransformController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBB9A28F8314000F4777A /* TransformController.swift */; };
+		42DDBB9D28F8371D00F4777A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBB9C28F8371D00F4777A /* SettingsController.swift */; };
+		42DDBB9F28F9821200F4777A /* ExistentialistCheck-Working.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */; };
+		42DDBBA128F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		42314C1E28D765BB007035C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42314C2728D89B59007035C0 /* ResultScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 		42314C2D28D9FE55007035C0 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		42DDBB9A28F8314000F4777A /* TransformController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformController.swift; sourceTree = "<group>"; };
+		42DDBB9C28F8371D00F4777A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ExistentialistCheck-Working.mlmodel"; sourceTree = "<group>"; };
+		42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExistentialistCheck_MixedData.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +72,16 @@
 		42314C0F28D765B8007035C0 /* ExistentialCheck */ = {
 			isa = PBXGroup;
 			children = (
+				42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */,
+				42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */,
 				42314C1028D765B8007035C0 /* AppDelegate.swift */,
 				42314C1228D765B8007035C0 /* SceneDelegate.swift */,
 				42314C1428D765B8007035C0 /* StartController.swift */,
-				42314C2D28D9FE55007035C0 /* CameraController.swift */,
+				42DDBB9C28F8371D00F4777A /* SettingsController.swift */,
 				4219EC2128DE4822003828F5 /* About Controller Scene.swift */,
+				42314C2D28D9FE55007035C0 /* CameraController.swift */,
 				42314C2728D89B59007035C0 /* ResultScene.swift */,
+				42DDBB9A28F8314000F4777A /* TransformController.swift */,
 				42314C1628D765B8007035C0 /* Main.storyboard */,
 				42314C1928D765BB007035C0 /* Assets.xcassets */,
 				42314C1B28D765BB007035C0 /* LaunchScreen.storyboard */,
@@ -155,12 +167,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DDBB9D28F8371D00F4777A /* SettingsController.swift in Sources */,
 				42314C1528D765B8007035C0 /* StartController.swift in Sources */,
 				42314C2828D89B59007035C0 /* ResultScene.swift in Sources */,
 				4219EC2228DE4823003828F5 /* About Controller Scene.swift in Sources */,
 				42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */,
+				42DDBB9F28F9821200F4777A /* ExistentialistCheck-Working.mlmodel in Sources */,
 				42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */,
+				42DDBB9B28F8314000F4777A /* TransformController.swift in Sources */,
 				42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */,
+				42DDBBA128F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

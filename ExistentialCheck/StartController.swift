@@ -8,6 +8,8 @@
 import UIKit
 import AVKit
 import Lumina
+import CoreML
+import AVKit
 
 class StartController: UIViewController
 {
@@ -16,6 +18,8 @@ class StartController: UIViewController
     @IBOutlet weak var instructionsLabel: UILabel!
     
     var labelText = "Here I write the point of the app"
+    
+    var poisonedData = false
     
     override func viewDidLoad()
     {
@@ -29,6 +33,7 @@ class StartController: UIViewController
         instructionsLabel.textAlignment = .center
         instructionsLabel.text = labelText
         
+        print("Poisoned Data: ", poisonedData)
     }
     
 
@@ -39,8 +44,28 @@ class StartController: UIViewController
         let camera = LuminaViewController()
         camera.delegate = self
         
-        //setup for the camera goes here
-        
+//        //here I will add the CoreML code
+//        let config = MLModelConfiguration()
+//        config.computeUnits = .cpuAndGPU
+//        if poisonedData
+//        {
+//            do {
+//                let realDataModel = LuminaModel(model: <#T##MLModel#>, type: <#T##String#>)
+//                camera.streamingModels = [realDataModel]
+//            } catch let error {
+//                self.showErrorAlert(with: error.localizedDescription)
+//                return
+//              }
+//        } else {
+//            do {
+//                let fakeDataModel = LuminaModel(model: <#T##MLModel#>, type: <#T##String#>)
+//                camera.streamingModels = [fakeDataModel]
+//            } catch let error {
+//                self.showErrorAlert(with: error.localizedDescription)
+//                return
+//              }
+//        }
+            
         //presenting the camera view
         camera.modalPresentationStyle = .fullScreen
         camera.position = .front
@@ -59,6 +84,7 @@ class StartController: UIViewController
           controller.livePhotoURL = map["livePhotoURL"] as? URL
           guard let positionBool = map["isPhotoSelfie"] as? Bool else { return }
           controller.position = positionBool ? .front : .back
+            controller.poisonedData = poisonedData
         } else { return }
       }
     }
@@ -71,8 +97,6 @@ extension StartController: LuminaDelegate
             self.performSegue(withIdentifier: "presentCameraSegue", sender: ["stillImage": stillImage, "livePhotoURL": livePhotoAt as Any, "depthData": depthData as Any, "isPhotoSelfie": controller.position == .front ? true : false])
         }
     }
-
-    
 
     func detected(metadata: [Any], from controller: LuminaViewController) {
         print(metadata)
@@ -112,6 +136,14 @@ extension CVPixelBuffer
         return position == .back ? .right : .leftMirrored
     }
   }
-    
 }
+
+extension StartController {
+  func showErrorAlert(with message: String) {
+    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    alert.addAction(.init(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+}
+
 

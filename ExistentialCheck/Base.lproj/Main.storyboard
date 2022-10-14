@@ -16,8 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-fA-4Zh">
+                                <rect key="frame" x="-2" y="733" width="390" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rVJ-tb-htM"/>
+                                    <barButtonItem title="About" image="info.circle" catalog="system" id="QQL-iG-gQO">
+                                        <connections>
+                                            <segue destination="XUu-VZ-zSL" kind="presentation" identifier="presentAboutController" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="I83-oH-6ZY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ioj-JB-Bdx"/>
+                                    <barButtonItem title="CameraButton" image="camera.shutter.button" catalog="system" id="nfS-nG-lbE">
+                                        <connections>
+                                            <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="etO-h7-s7i"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HbJ-Ag-vdx"/>
+                                    <barButtonItem title="Settings" image="gearshape" catalog="system" id="HpB-Ay-vdl">
+                                        <connections>
+                                            <segue destination="thb-j8-uvL" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="duZ-L7-hvg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9W8-dX-V6C"/>
+                                </items>
+                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORO-op-Cvd">
-                                <rect key="frame" x="62" y="149" width="266" height="243"/>
+                                <rect key="frame" x="60" y="301" width="266" height="243"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="243" id="lcZ-Lq-8eY"/>
                                 </constraints>
@@ -25,38 +50,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-fA-4Zh">
-                                <rect key="frame" x="-2" y="733" width="391" height="45"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="hrq-p6-dAA"/>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Cqv-Fm-c3n"/>
-                                    <barButtonItem title="About" id="QQL-iG-gQO">
-                                        <connections>
-                                            <segue destination="XUu-VZ-zSL" kind="presentation" identifier="presentAboutController" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="I83-oH-6ZY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="fDu-xv-Uzl"/>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="o5L-YG-0C6"/>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="w7b-Mx-cVz"/>
-                                    <barButtonItem title="CameraButton" image="camera.shutter.button" catalog="system" id="nfS-nG-lbE">
-                                        <connections>
-                                            <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" id="etO-h7-s7i"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="nys-NH-uDP"/>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="eA4-WQ-OQj"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ORO-op-Cvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fh-fQ-hyq"/>
-                            <constraint firstItem="ORO-op-Cvd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="7bc-Cv-UvW"/>
-                            <constraint firstItem="ORO-op-Cvd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="102" id="n8v-0u-8wN"/>
+                            <constraint firstItem="ORO-op-Cvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="2fh-fQ-hyq"/>
+                            <constraint firstItem="ORO-op-Cvd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="7bc-Cv-UvW"/>
+                            <constraint firstItem="ORO-op-Cvd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="254" id="n8v-0u-8wN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fAX-Lx-8hO"/>
                     <connections>
                         <outlet property="instructionsLabel" destination="ORO-op-Cvd" id="imw-C1-sMu"/>
                         <segue destination="m5g-PB-JWV" kind="presentation" identifier="presentCameraSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ods-RT-vtf"/>
@@ -74,27 +77,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpA-Jc-WWn">
-                                <rect key="frame" x="30" y="105" width="331" height="635"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpA-Jc-WWn">
+                                <rect key="frame" x="0.0" y="134" width="390" height="576"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spv-cI-apE">
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="POg-44-bha"/>
+                                    <barButtonItem title="Back" image="arrowshape.backward" catalog="system" id="7gW-62-BIq">
+                                        <connections>
+                                            <action selector="backButton:" destination="m5g-PB-JWV" id="0td-aH-SMP"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="sLH-cd-eRC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="e5W-Bx-vgn"/>
+                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="mj9-ry-HRO"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yfa-fX-JjQ"/>
+                                    <barButtonItem title="Learn" id="b0w-pK-dWf">
+                                        <connections>
+                                            <action selector="learnButton:" destination="m5g-PB-JWV" id="qxi-YN-TnG"/>
+                                            <segue destination="eI8-NB-BHP" kind="presentation" identifier="presentResultSegue" modalPresentationStyle="fullScreen" id="TSK-rm-Gc6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="O4T-IC-7G3"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtz-2c-zBh">
+                                <rect key="frame" x="16" y="88" width="358" height="31"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="D6c-ca-cng"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bpA-Jc-WWn" firstAttribute="leading" secondItem="D6c-ca-cng" secondAttribute="leading" id="8OM-SJ-roB"/>
                             <constraint firstItem="bpA-Jc-WWn" firstAttribute="centerY" secondItem="Mov-xc-oEw" secondAttribute="centerY" id="KVT-pr-G2e"/>
+                            <constraint firstItem="dtz-2c-zBh" firstAttribute="top" secondItem="D6c-ca-cng" secondAttribute="top" constant="41" id="WQ6-yx-nAi"/>
+                            <constraint firstItem="dtz-2c-zBh" firstAttribute="centerX" secondItem="Spv-cI-apE" secondAttribute="centerX" id="dai-Xh-gLw"/>
                             <constraint firstItem="bpA-Jc-WWn" firstAttribute="centerX" secondItem="Mov-xc-oEw" secondAttribute="centerX" id="eiO-ck-XAL"/>
+                            <constraint firstItem="Spv-cI-apE" firstAttribute="leading" secondItem="bpA-Jc-WWn" secondAttribute="leading" id="fUL-7i-qqK"/>
+                            <constraint firstItem="dtz-2c-zBh" firstAttribute="leading" secondItem="D6c-ca-cng" secondAttribute="leading" constant="16" id="gKO-BH-587"/>
+                            <constraint firstItem="Spv-cI-apE" firstAttribute="bottom" secondItem="D6c-ca-cng" secondAttribute="bottom" id="hJD-zf-2A7"/>
                             <constraint firstItem="bpA-Jc-WWn" firstAttribute="top" secondItem="D6c-ca-cng" secondAttribute="top" constant="87" id="iGG-8r-UEy"/>
+                            <constraint firstItem="dtz-2c-zBh" firstAttribute="centerX" secondItem="bpA-Jc-WWn" secondAttribute="centerX" id="lgR-Zz-u32"/>
+                            <constraint firstItem="bpA-Jc-WWn" firstAttribute="top" secondItem="dtz-2c-zBh" secondAttribute="bottom" constant="15" id="mLO-DO-cwb"/>
+                            <constraint firstItem="Spv-cI-apE" firstAttribute="top" secondItem="bpA-Jc-WWn" secondAttribute="bottom" constant="56" id="x1L-2U-ZxM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="X1y-xK-pxC"/>
                     <connections>
                         <outlet property="imageView" destination="bpA-Jc-WWn" id="Jvw-lr-xon"/>
-                        <segue destination="eI8-NB-BHP" kind="presentation" identifier="presentResultSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="MtZ-My-Wg0"/>
+                        <outlet property="resultLabel" destination="dtz-2c-zBh" id="o6O-QU-ykS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSq-Gb-Jz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686.15384615384608" y="947.63033175355451"/>
+            <point key="canvasLocation" x="-706.15384615384608" y="947.63033175355451"/>
         </scene>
         <!--Result Scene-->
         <scene sceneID="UkN-Ea-vuz">
@@ -104,21 +144,162 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Mq-vlU">
-                                <rect key="frame" x="30" y="105" width="331" height="635"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Mq-vlU">
+                                <rect key="frame" x="64" y="66" width="262" height="427"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snh-oZ-OIB">
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DQO-Hi-gus"/>
+                                    <barButtonItem title="Back" image="arrowshape.backward" catalog="system" id="DrL-by-m0U">
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="eI8-NB-BHP" id="Lfg-ti-nU3"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="tRx-WQ-HNH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eNM-5x-b5D"/>
+                                    <barButtonItem title="Transform" id="ptX-gi-Q2i">
+                                        <connections>
+                                            <action selector="transformButton:" destination="eI8-NB-BHP" id="gKw-yc-M0R"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vbA-5d-l4D"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label with the text that explains what goes on" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-9x-aSi">
+                                <rect key="frame" x="78" y="501" width="234" height="231"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="231" id="raR-xm-TJi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l1d-gC-j9H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="g0C-9x-aSi" secondAttribute="bottom" constant="112" id="F6X-e3-RXR"/>
+                            <constraint firstItem="g0C-9x-aSi" firstAttribute="centerX" secondItem="snh-oZ-OIB" secondAttribute="centerX" id="JQN-Gv-O2h"/>
+                            <constraint firstItem="g0C-9x-aSi" firstAttribute="centerX" secondItem="B7l-Mq-vlU" secondAttribute="centerX" id="MR8-n3-8YE"/>
+                            <constraint firstItem="snh-oZ-OIB" firstAttribute="leading" secondItem="l1d-gC-j9H" secondAttribute="leading" id="QtT-Je-hFi"/>
+                            <constraint firstItem="snh-oZ-OIB" firstAttribute="bottom" secondItem="l1d-gC-j9H" secondAttribute="bottom" id="T9F-Sf-C5j"/>
+                            <constraint firstItem="snh-oZ-OIB" firstAttribute="top" secondItem="g0C-9x-aSi" secondAttribute="bottom" constant="34" id="Vjf-XH-Glq"/>
+                            <constraint firstItem="g0C-9x-aSi" firstAttribute="leading" secondItem="l1d-gC-j9H" secondAttribute="leading" constant="78" id="XMW-Fn-AJ7"/>
+                            <constraint firstItem="g0C-9x-aSi" firstAttribute="top" secondItem="B7l-Mq-vlU" secondAttribute="bottom" constant="8" id="fyV-c1-mSm"/>
+                            <constraint firstItem="B7l-Mq-vlU" firstAttribute="leading" secondItem="l1d-gC-j9H" secondAttribute="leading" constant="64" id="h5h-Cf-WXj"/>
+                            <constraint firstItem="B7l-Mq-vlU" firstAttribute="top" secondItem="l1d-gC-j9H" secondAttribute="top" constant="19" id="rxI-mG-0sJ"/>
+                            <constraint firstItem="g0C-9x-aSi" firstAttribute="centerX" secondItem="c4B-uq-73z" secondAttribute="centerX" id="vad-mJ-7ll"/>
+                            <constraint firstItem="B7l-Mq-vlU" firstAttribute="centerX" secondItem="snh-oZ-OIB" secondAttribute="centerX" id="wJg-x0-29U"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1da-Y7-3qd"/>
                     <connections>
+                        <outlet property="explanationLabel" destination="g0C-9x-aSi" id="Mpj-je-vAC"/>
+                        <outlet property="informationLabel" destination="g0C-9x-aSi" id="fcc-Ru-OMO"/>
                         <outlet property="tastyImage" destination="B7l-Mq-vlU" id="X79-iO-JnU"/>
+                        <segue destination="dAV-L2-F2L" kind="presentation" identifier="presentTransformController" modalPresentationStyle="fullScreen" id="NBO-LL-7fm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfd-NQ-HzV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="931" y="948"/>
+            <point key="canvasLocation" x="976.92307692307691" y="947.63033175355451"/>
+        </scene>
+        <!--Transform Controller-->
+        <scene sceneID="6h6-HP-1Ny">
+            <objects>
+                <viewController id="dAV-L2-F2L" customClass="TransformController" customModule="ExistentialCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rMd-Vh-zUR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-0E-m4a">
+                                <rect key="frame" x="0.0" y="90" width="390" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ME-Ap-GML">
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dgn-vf-EqU"/>
+                                    <barButtonItem title="Back" image="arrowshape.backward" catalog="system" id="8xD-km-xTa">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="sjy-LS-roq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0Mv-mm-wpr"/>
+                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="lbQ-5T-tTi"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pHQ-WJ-gVN"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GH2-bT-PGh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3qb-u2-oqU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6yg-hM-NEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2363.0769230769229" y="948.34123222748815"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="yka-1d-4rd">
+            <objects>
+                <viewController id="thb-j8-uvL" customClass="SettingsController" customModule="ExistentialCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eig-Lw-u40">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-AG-lqS">
+                                <rect key="frame" x="0.0" y="766" width="390" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="w7i-uD-bfs"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wIe-yj-Ob0"/>
+                                    <barButtonItem title="Back" image="arrowshape.backward" catalog="system" id="oba-Yx-U2W">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="settingsToStart" modalPresentationStyle="fullScreen" id="Xxu-Xn-RL9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="z5G-JJ-dFX"/>
+                                </items>
+                            </toolbar>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="dataSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="ZbY-VI-6ib">
+                                <rect key="frame" x="170.66666666666666" y="414" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation of the switch" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO0-PQ-y41">
+                                <rect key="frame" x="67" y="248" width="256" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="GqC-cl-Bil"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="huF-km-17s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ExN-AG-lqS" firstAttribute="bottom" secondItem="huF-km-17s" secondAttribute="bottom" id="2cn-LA-lH3"/>
+                            <constraint firstItem="ZbY-VI-6ib" firstAttribute="top" secondItem="UO0-PQ-y41" secondAttribute="bottom" constant="63" id="JL5-s9-GYR"/>
+                            <constraint firstItem="UO0-PQ-y41" firstAttribute="leading" secondItem="huF-km-17s" secondAttribute="leading" constant="67" id="RxF-Iv-g96"/>
+                            <constraint firstItem="UO0-PQ-y41" firstAttribute="centerX" secondItem="eig-Lw-u40" secondAttribute="centerX" id="bz8-OC-mVO"/>
+                            <constraint firstItem="UO0-PQ-y41" firstAttribute="top" secondItem="huF-km-17s" secondAttribute="top" constant="201" id="dIe-JM-Nwt"/>
+                            <constraint firstItem="UO0-PQ-y41" firstAttribute="centerX" secondItem="ExN-AG-lqS" secondAttribute="centerX" id="ooK-vH-Epd"/>
+                            <constraint firstItem="ExN-AG-lqS" firstAttribute="leading" secondItem="huF-km-17s" secondAttribute="leading" id="t2e-TA-nEH"/>
+                            <constraint firstItem="UO0-PQ-y41" firstAttribute="centerX" secondItem="ZbY-VI-6ib" secondAttribute="centerX" id="ueu-6d-HJt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dbT-Jc-p7T"/>
+                    <connections>
+                        <outlet property="dataSwitch" destination="ZbY-VI-6ib" id="ynO-6b-b7a"/>
+                        <outlet property="explanationLabel" destination="UO0-PQ-y41" id="LBh-lZ-FoW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJY-Gs-Hz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.9230769230769" y="-634.12322274881512"/>
         </scene>
         <!--About Controller Scene-->
         <scene sceneID="7X3-eu-Ywa">
@@ -132,17 +313,17 @@
                                 <rect key="frame" x="0.0" y="739" width="390" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="oqo-2f-Waf"/>
-                                    <barButtonItem title="Back" id="pDx-bZ-Rfr">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qbe-gC-o0H"/>
+                                    <barButtonItem title="Back" image="arrowshape.backward" catalog="system" id="pDx-bZ-Rfr">
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="presentation" identifier="returnToStartSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="WrK-i8-Fts"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PKx-fA-Eaa"/>
-                                    <barButtonItem title="Camera" image="camera.shutter.button.fill" catalog="system" id="CgS-ya-l1W"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4st-zD-bLD"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOM-YH-BZV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the About Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOM-YH-BZV">
                                 <rect key="frame" x="45" y="133" width="300" height="578"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -162,20 +343,25 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="explanationLabel" destination="ZOM-YH-BZV" id="vBp-Yy-P74"/>
                         <segue destination="eI8-NB-BHP" kind="presentation" identifier="presentGanResult" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="OjF-Dx-ZMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYl-u3-0Gl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930.76923076923072" y="-38.388625592417057"/>
+            <point key="canvasLocation" x="1860" y="-38.388625592417057"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="OjF-Dx-ZMl"/>
+        <segue reference="Xxu-Xn-RL9"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.backward" catalog="system" width="128" height="104"/>
         <image name="camera.shutter.button" catalog="system" width="128" height="108"/>
-        <image name="camera.shutter.button.fill" catalog="system" width="128" height="108"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

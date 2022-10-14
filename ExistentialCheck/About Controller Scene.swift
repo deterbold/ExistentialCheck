@@ -9,21 +9,20 @@ import UIKit
 
 class About_Controller_Scene: UIViewController {
 
-    override func viewDidLoad() {
+    @IBOutlet weak var explanationLabel: UILabel!
+    
+    override func viewDidLoad()
+    {
+        print("About")
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        explanationLabel.font = UIFont(name: "Futura Medium", size: 30)
+        explanationLabel.adjustsFontSizeToFitWidth = true
+        explanationLabel.allowsDefaultTighteningForTruncation = true
+        explanationLabel.numberOfLines = 0
+        explanationLabel.textAlignment = .center
+        explanationLabel.text = "An explanation of what the app is about"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

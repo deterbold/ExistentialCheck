@@ -16,115 +16,133 @@ class CameraController: UIViewController
     
     @IBOutlet weak var imageView: UIImageView!
         
+    @IBOutlet weak var resultLabel: UILabel!
+    
     var image: UIImage?
     var livePhotoURL: URL?
     var showingDepth: Bool = false
     var position: CameraPosition = .front
     private var _depthData: Any?
     
-    //var model: VNCoreMLModel?
-        
-//    private lazy var classificationRequest: VNCoreMLRequest =
-//    {
-//      do {
-//        // 2
-//          switch creativeMode
-//          {
-//          case 0:
-//              model = try VNCoreMLModel(for: prototype_taste().model)
-//          case 1:
-//              model = try VNCoreMLModel(for: Tastegram_Hard().model)
-//          case 2:
-//              model = try VNCoreMLModel(for: Tastegram_Extremes().model)
-//          case 3:
-//              model = try VNCoreMLModel(for: Tastegram_Influencer().model)
-//          default:
-//              model = try VNCoreMLModel(for: prototype_taste().model)
-//          }
-////        //let model = try VNCoreMLModel(for: prototype_taste().model)
-////          if creativeMode == 0
-////          {
-////              model = try VNCoreMLModel(for: Tastegram_Hard().model)
-////          }
-//          // 3
-//          let request = VNCoreMLRequest(model: model!) { request, _ in
-//            if let classifications =
-//              request.results as? [VNClassificationObservation] {
-//              print("Classification results: \(classifications)")
-//                print(classifications.first!.identifier as String as Any)
-//                print(request.results?.first?.confidence as Any)
-//                let veredict = classifications.first!.identifier as String
-//                if veredict == "Good"
-//                {
-//                    print("good picture")
-//                    self.sendPicture()
-//
-//                }
-//                else if veredict == "Bad"
-//                {
-//                    print("bad picture")
-//                    self.sendText()
-//                }
-//
-//            }
-//        }
-//        // 4
-//        request.imageCropAndScaleOption = .centerCrop
-//        return request
-//      } catch {
-//        // 5
-//        fatalError("Failed to load Vision ML model: \(error)")
-//      }
-//    }()
+    var poisonedData = false
+    var existentialStatus = ""
+    var isReal: Bool!
+    
+    var model: VNCoreMLModel?
+    
+    private lazy var classificationRequest: VNCoreMLRequest =
+    {
+        do {
+            if poisonedData
+            {
+                model = try VNCoreMLModel(for: ExistentialistCheck_MixedData().model)
+            } else {
+                model = try VNCoreMLModel(for: ExistentialistCheck_Working().model)
+            }
+            
+            let request = VNCoreMLRequest(model: model!) { request, _ in
+                if let classifications = request.results as? [VNClassificationObservation] {
+                    //print("Classification results: \(classifications)")
+                    //print(classifications.first!.identifier as String)
+                    //print(request.results?.first?.confidence as Any)
+                    
+                    let veredict = classifications.first!.identifier as String
+                    
+                    if veredict == "Real"
+                    {
+                        print("the picture is real")
+                        print(self.poisonedData)
+                        DispatchQueue.main.async {
+                            self.resultLabel.text = "Congratulations! You are real!"
+                        }
+                        self.isReal = true
+                    }
+                    else if veredict == "Unexisting"
+                    {
+                        print("the picture is not real")
+                        print(self.poisonedData)
+                        DispatchQueue.main.async {
+                            self.resultLabel.text = "Unfortunately, you are not real"
+                        }
+                        self.isReal = false
+                    }
+                }
+            }
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            
+            fatalError("Failed to load Vision ML model: \(error)")
+            
+        }
+    }()
     
     override func viewWillAppear(_ animated: Bool)
     {
         self.imageView.image = image
+        resultLabel.font = UIFont(name: "Futura Medium", size: 30)
+        resultLabel.adjustsFontSizeToFitWidth = true
+        resultLabel.allowsDefaultTighteningForTruncation = true
+        resultLabel.numberOfLines = 0
+        resultLabel.textAlignment = .center
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        print("Camera")
-    }
-    
-    
-//    func classifyImage(_ image: UIImage)
-//    {
-//      // 1
-//      guard let orientation = CGImagePropertyOrientation(
-//        rawValue: UInt32(image.imageOrientation.rawValue)) else {
-//        return
-//      }
-//      guard let ciImage = CIImage(image: image) else {
-//        fatalError("Unable to create \(CIImage.self) from \(image).")
-//      }
-//      // 2
-//      DispatchQueue.global(qos: .userInitiated).async {
-//        let handler =
-//          VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
-//        do {
-//          try handler.perform([self.classificationRequest])
-//        } catch {
-//          print("Failed to perform classification.\n\(error.localizedDescription)")
+        print("Camera Controller")
+//        if poisonedData
+//        {
+//            print("the camera controller has poisoned data")
+//
+//
+//        } else
+//        {
+//            print("the camera controller has good data")
+//
 //        }
-//      }
-//    }
-    
-    func sendPicture()
-    {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "presentResultSegue", sender: self)
-
-        }
+        classifyImage(image!)
     }
+        
+    func classifyImage(_ image: UIImage)
+    {
+      // 1
+      guard let orientation = CGImagePropertyOrientation(
+        rawValue: UInt32(image.imageOrientation.rawValue)) else {
+        return
+      }
+      guard let ciImage = CIImage(image: image) else {
+        fatalError("Unable to create \(CIImage.self) from \(image).")
+      }
+      // 2
+      DispatchQueue.global(qos: .userInitiated).async {
+        let handler =
+          VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+        do {
+          try handler.perform([self.classificationRequest])
+        } catch {
+          print("Failed to perform classification.\n\(error.localizedDescription)")
+        }
+      }
+    }
+    
+//    func sendPicture()
+//    {
+//        print("send Picture is called")
+//        DispatchQueue.main.async {
+//            self.performSegue(withIdentifier: "presentResultSegue", sender: self)
+//
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("sending picture")
         if segue.identifier == "presentResultSegue" {
             let dvc = segue.destination as! ResultScene
             dvc.image = self.image
+            dvc.isReal = self.isReal
+            self.imageView.image = nil
         }
     }
 
