@@ -21,6 +21,8 @@
 		42DDBB9D28F8371D00F4777A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBB9C28F8371D00F4777A /* SettingsController.swift */; };
 		42DDBB9F28F9821200F4777A /* ExistentialistCheck-Working.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */; };
 		42DDBBA128F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */; };
+		42DDBBA328F9FD0100F4777A /* TransformationMachinePrime.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBBA228F9FD0000F4777A /* TransformationMachinePrime.mlmodel */; };
+		42DDBBA528FB5B3100F4777A /* TransformationMachineRedux.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42DDBBA428FB5B3100F4777A /* TransformationMachineRedux.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		42DDBB9C28F8371D00F4777A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ExistentialistCheck-Working.mlmodel"; sourceTree = "<group>"; };
 		42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExistentialistCheck_MixedData.mlmodel; sourceTree = "<group>"; };
+		42DDBBA228F9FD0000F4777A /* TransformationMachinePrime.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TransformationMachinePrime.mlmodel; sourceTree = "<group>"; };
+		42DDBBA428FB5B3100F4777A /* TransformationMachineRedux.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TransformationMachineRedux.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 		42314C0F28D765B8007035C0 /* ExistentialCheck */ = {
 			isa = PBXGroup;
 			children = (
+				42DDBBA428FB5B3100F4777A /* TransformationMachineRedux.mlmodel */,
+				42DDBBA228F9FD0000F4777A /* TransformationMachinePrime.mlmodel */,
 				42DDBBA028F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel */,
 				42DDBB9E28F9821200F4777A /* ExistentialistCheck-Working.mlmodel */,
 				42314C1028D765B8007035C0 /* AppDelegate.swift */,
@@ -173,9 +179,11 @@
 				4219EC2228DE4823003828F5 /* About Controller Scene.swift in Sources */,
 				42314C1128D765B8007035C0 /* AppDelegate.swift in Sources */,
 				42DDBB9F28F9821200F4777A /* ExistentialistCheck-Working.mlmodel in Sources */,
+				42DDBBA528FB5B3100F4777A /* TransformationMachineRedux.mlmodel in Sources */,
 				42314C1328D765B8007035C0 /* SceneDelegate.swift in Sources */,
 				42DDBB9B28F8314000F4777A /* TransformController.swift in Sources */,
 				42314C2E28D9FE55007035C0 /* CameraController.swift in Sources */,
+				42DDBBA328F9FD0100F4777A /* TransformationMachinePrime.mlmodel in Sources */,
 				42DDBBA128F9825200F4777A /* ExistentialistCheck_MixedData.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -69,7 +69,12 @@ class StartController: UIViewController
         //presenting the camera view
         camera.modalPresentationStyle = .fullScreen
         camera.position = .front
-        camera.textPrompt = "Check whether you exist or not"
+        if poisonedData
+        {
+            camera.textPrompt = "Check whether you are real (mixed dataset)"
+        } else {
+            camera.textPrompt = "Check whether you exist or not"
+        }
         camera.resolution = .highest
         camera.setSwitchButton(visible: false)
         present(camera, animated: true, completion: nil)

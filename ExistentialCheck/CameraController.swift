@@ -30,6 +30,23 @@ class CameraController: UIViewController
     
     var model: VNCoreMLModel?
     
+    @IBAction func shareButtonAction(_ sender: Any)
+    {
+        // image to share
+        //let image = UIImage(named: "Image")
+               
+        // set up activity view controller
+        let imageToShare = [ imageView.image! ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+               
+        // exclude some activity types from the list (optional)
+        //activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+               
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     private lazy var classificationRequest: VNCoreMLRequest =
     {
         do {
@@ -40,29 +57,29 @@ class CameraController: UIViewController
                 model = try VNCoreMLModel(for: ExistentialistCheck_Working().model)
             }
             
-            let request = VNCoreMLRequest(model: model!) { request, _ in
+            let request = VNCoreMLRequest(model: model!) { [self] request, _ in
                 if let classifications = request.results as? [VNClassificationObservation] {
-                    //print("Classification results: \(classifications)")
-                    //print(classifications.first!.identifier as String)
-                    //print(request.results?.first?.confidence as Any)
                     
                     let veredict = classifications.first!.identifier as String
                     
                     if veredict == "Real"
                     {
                         print("the picture is real")
-                        print(self.poisonedData)
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [self] in
                             self.resultLabel.text = "Congratulations! You are real!"
+                            let transformedImage = self.textToImage(drawText: "Congratulations! You are real!", inImage: image!, atPoint: CGPoint(x: image!.size.width/2 - 100, y: image!.size.height - 100))
+                            self.imageView.image = transformedImage
                         }
                         self.isReal = true
+                        
                     }
                     else if veredict == "Unexisting"
                     {
                         print("the picture is not real")
-                        print(self.poisonedData)
                         DispatchQueue.main.async {
                             self.resultLabel.text = "Unfortunately, you are not real"
+                            let transformedImage = self.textToImage(drawText: "Unfortunately, you are not real!", inImage: self.image!, atPoint: CGPoint(x: self.image!.size.width/2 - 100, y: self.image!.size.height - 100))
+                            self.imageView.image = transformedImage
                         }
                         self.isReal = false
                     }
@@ -91,16 +108,6 @@ class CameraController: UIViewController
     {
         super.viewDidLoad()
         print("Camera Controller")
-//        if poisonedData
-//        {
-//            print("the camera controller has poisoned data")
-//
-//
-//        } else
-//        {
-//            print("the camera controller has good data")
-//
-//        }
         classifyImage(image!)
     }
         
@@ -126,15 +133,6 @@ class CameraController: UIViewController
       }
     }
     
-//    func sendPicture()
-//    {
-//        print("send Picture is called")
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: "presentResultSegue", sender: self)
-//
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("sending picture")
@@ -144,6 +142,29 @@ class CameraController: UIViewController
             dvc.isReal = self.isReal
             self.imageView.image = nil
         }
+    }
+    
+    //https://stackoverflow.com/questions/28906914/how-do-i-add-text-to-an-image-in-ios-swift
+    func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
+        let textColor = UIColor.white
+        let textFont = UIFont(name: "Futura-CondensedExtraBold", size: 40)!
+
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+
+        let textFontAttributes = [
+            NSAttributedString.Key.font: textFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            ] as [NSAttributedString.Key : Any]
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let rect = CGRect(origin: point, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
     }
 
 }

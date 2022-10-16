@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-fA-4Zh">
-                                <rect key="frame" x="-2" y="733" width="390" height="45"/>
+                                <rect key="frame" x="-3" y="733" width="390" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rVJ-tb-htM"/>
@@ -91,7 +91,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="e5W-Bx-vgn"/>
-                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="mj9-ry-HRO"/>
+                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="mj9-ry-HRO">
+                                        <connections>
+                                            <action selector="shareButtonAction:" destination="m5g-PB-JWV" id="Zq9-TR-b32"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yfa-fX-JjQ"/>
                                     <barButtonItem title="Learn" id="b0w-pK-dWf">
                                         <connections>
@@ -139,6 +143,7 @@
         <!--Result Scene-->
         <scene sceneID="UkN-Ea-vuz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfd-NQ-HzV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="eI8-NB-BHP" customClass="ResultScene" customModule="ExistentialCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c4B-uq-73z">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -163,10 +168,21 @@
                                             <action selector="transformButton:" destination="eI8-NB-BHP" id="gKw-yc-M0R"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Evaluate" id="wYl-Jd-eB9">
+                                        <connections>
+                                            <action selector="evaluateAgain:" destination="eI8-NB-BHP" id="FyB-FM-zKu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zc0-dD-toU"/>
+                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="T7t-jr-b7i">
+                                        <connections>
+                                            <action selector="shareButton:" destination="eI8-NB-BHP" id="FQo-eJ-bde"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vbA-5d-l4D"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label with the text that explains what goes on" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-9x-aSi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label with the text that explains what goes on" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-9x-aSi">
                                 <rect key="frame" x="78" y="501" width="234" height="231"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="231" id="raR-xm-TJi"/>
@@ -195,13 +211,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="1da-Y7-3qd"/>
                     <connections>
-                        <outlet property="explanationLabel" destination="g0C-9x-aSi" id="Mpj-je-vAC"/>
-                        <outlet property="informationLabel" destination="g0C-9x-aSi" id="fcc-Ru-OMO"/>
+                        <outlet property="evaluateButton" destination="wYl-Jd-eB9" id="dOA-uj-kiT"/>
+                        <outlet property="informationLabel" destination="g0C-9x-aSi" id="HhH-HQ-q51"/>
+                        <outlet property="shareButton" destination="T7t-jr-b7i" id="PlE-sF-gb9"/>
                         <outlet property="tastyImage" destination="B7l-Mq-vlU" id="X79-iO-JnU"/>
+                        <outlet property="transformButton" destination="ptX-gi-Q2i" id="iFT-U3-RNz"/>
                         <segue destination="dAV-L2-F2L" kind="presentation" identifier="presentTransformController" modalPresentationStyle="fullScreen" id="NBO-LL-7fm"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sfd-NQ-HzV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="976.92307692307691" y="947.63033175355451"/>
         </scene>
@@ -353,8 +370,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OjF-Dx-ZMl"/>
-        <segue reference="Xxu-Xn-RL9"/>
+        <segue reference="TSK-rm-Gc6"/>
+        <segue reference="sLH-cd-eRC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward" catalog="system" width="128" height="104"/>

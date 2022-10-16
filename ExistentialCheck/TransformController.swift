@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import CoreML
+import AVKit
+import Vision
 
 class TransformController: UIViewController {
 
