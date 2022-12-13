@@ -42,13 +42,13 @@ class ResultScene: UIViewController
         informationLabel.textAlignment = .center
         if isReal
         {
-            informationLabel.text = "A detailed explanation of what is to be real"
-            transformButton.isHidden = false
+            informationLabel.text = "The Reality Model confirms that you exist"
+            transformButton.isHidden = true
             evaluateButton.isHidden = true
         }
         else if !isReal
         {
-            informationLabel.text = "An explanation of what it is not to be real"
+            informationLabel.text = "The Reality Model confirms that you do not exist"
             transformButton.isHidden = true
             evaluateButton.isHidden = true
         }
@@ -77,6 +77,7 @@ class ResultScene: UIViewController
                 tastyImage.contentMode = .center
                 //tastyImage.image = UIImage(cgImage: tempImage!)
                 tastyImage.image = writtenImage
+                classifyImage(tastyImage.image!)
             } catch let error as NSError {
                 print("CoreML Model Error: \(error)")
             }
@@ -168,13 +169,14 @@ class ResultScene: UIViewController
             let request = VNCoreMLRequest(model: evaluationModel!) { [self] request, _ in
                 if let classifications = request.results as? [VNClassificationObservation] {
                     
+                    print("classifying in result scene")
                     let veredict = classifications.first!.identifier as String
                     
                     if veredict == "Real"
                     {
                         print("the picture is real")
                         DispatchQueue.main.async { [self] in
-                            self.informationLabel.text = "Congratulations! You are real!"
+                            self.informationLabel.text = "Congratulations! You exist!"
                             self.evaluateButton.isHidden = true
                             
                         }
@@ -185,7 +187,7 @@ class ResultScene: UIViewController
                     {
                         print("the picture is not real")
                         DispatchQueue.main.async {
-                            self.informationLabel.text = "Unfortunately, you are not real"
+                            self.informationLabel.text = "Unfortunately, you do not exist"
                             self.evaluateButton.isHidden = true
                         }
                         self.isReal = false

@@ -14,7 +14,7 @@ class TransformController: UIViewController {
 
     override func viewDidLoad()
     {
-        print("Trasform Controller")
+        print("Transform Controller")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

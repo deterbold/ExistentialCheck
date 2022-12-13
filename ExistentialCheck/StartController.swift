@@ -14,13 +14,15 @@ import AVKit
 class StartController: UIViewController
 {
     
-    
+    //MARK: OUTLETS
     @IBOutlet weak var instructionsLabel: UILabel!
     
-    var labelText = "Here I write the point of the app"
     
+    //MARK: VARIABLES
+    var labelText = "Take a selfie and check if you exist or not"
     var poisonedData = false
     
+    //MARK: LOAD VIEW
     override func viewDidLoad()
     {
         print("Start Controller")
@@ -36,50 +38,31 @@ class StartController: UIViewController
         print("Poisoned Data: ", poisonedData)
     }
     
-
+    //MARK: CAMERA BUTTON FUNCTION
     @IBAction func cameraButtonTapped(_ sender: Any)
     {
         //code for setting up the camera and presenting the view goes here.
         //creating the camera view controller
         let camera = LuminaViewController()
         camera.delegate = self
-        
-//        //here I will add the CoreML code
-//        let config = MLModelConfiguration()
-//        config.computeUnits = .cpuAndGPU
-//        if poisonedData
-//        {
-//            do {
-//                let realDataModel = LuminaModel(model: <#T##MLModel#>, type: <#T##String#>)
-//                camera.streamingModels = [realDataModel]
-//            } catch let error {
-//                self.showErrorAlert(with: error.localizedDescription)
-//                return
-//              }
-//        } else {
-//            do {
-//                let fakeDataModel = LuminaModel(model: <#T##MLModel#>, type: <#T##String#>)
-//                camera.streamingModels = [fakeDataModel]
-//            } catch let error {
-//                self.showErrorAlert(with: error.localizedDescription)
-//                return
-//              }
-//        }
+
             
         //presenting the camera view
         camera.modalPresentationStyle = .fullScreen
         camera.position = .front
+        
         if poisonedData
         {
-            camera.textPrompt = "Check whether you are real (mixed dataset)"
+            camera.textPrompt = "Check whether you exist (Alternative Reality Model)"
         } else {
-            camera.textPrompt = "Check whether you exist or not"
+            camera.textPrompt = "Check whether you exist"
         }
         camera.resolution = .highest
         camera.setSwitchButton(visible: false)
         present(camera, animated: true, completion: nil)
     }
     
+    //MARK: SEGUE FUNCTION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
       if segue.identifier == "presentCameraSegue"{
@@ -95,6 +78,7 @@ class StartController: UIViewController
     }
 }
 
+//MARK: COMPLYING TO LUMINA
 extension StartController: LuminaDelegate
 {
     func captured(stillImage: UIImage, livePhotoAt: URL?, depthData: Any?, from controller: LuminaViewController) {
@@ -112,6 +96,7 @@ extension StartController: LuminaDelegate
     }
 }
 
+//MARK: PIXELBUFFER EXTENSION
 extension CVPixelBuffer
 {
   func normalizedImage(with position: CameraPosition) -> UIImage? {
@@ -143,6 +128,7 @@ extension CVPixelBuffer
   }
 }
 
+//MARK: ERROR EXTENSION
 extension StartController {
   func showErrorAlert(with message: String) {
     let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

@@ -8,7 +8,8 @@
 import UIKit
 
 class About_Controller_Scene: UIViewController {
-
+    
+    //MARK: OUTLETS
     @IBOutlet weak var explanationLabel: UILabel!
     
     override func viewDidLoad()
@@ -21,7 +22,7 @@ class About_Controller_Scene: UIViewController {
         explanationLabel.allowsDefaultTighteningForTruncation = true
         explanationLabel.numberOfLines = 0
         explanationLabel.textAlignment = .center
-        explanationLabel.text = "An explanation of what the app is about"
+        explanationLabel.text = "Do you want to know what your Existential Status is? Now you can, thanks to the infalible power of Machine Learning and Ridiculous Software's Reality Model. Take a selfie, check if you exist!"
     }
     
 

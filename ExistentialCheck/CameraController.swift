@@ -13,11 +13,11 @@ import AVKit
 
 class CameraController: UIViewController
 {
-    
+    //MARK: OUTLETS
     @IBOutlet weak var imageView: UIImageView!
-        
     @IBOutlet weak var resultLabel: UILabel!
     
+    //MARK: VARIABLES
     var image: UIImage?
     var livePhotoURL: URL?
     var showingDepth: Bool = false
@@ -30,11 +30,10 @@ class CameraController: UIViewController
     
     var model: VNCoreMLModel?
     
+    //MARK: SHARE BUTTON
     @IBAction func shareButtonAction(_ sender: Any)
     {
-        // image to share
-        //let image = UIImage(named: "Image")
-               
+        
         // set up activity view controller
         let imageToShare = [ imageView.image! ]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
@@ -47,6 +46,7 @@ class CameraController: UIViewController
         self.present(activityViewController, animated: true, completion: nil)
     }
     
+    //MARK: CLASSIFICATION REQUEST
     private lazy var classificationRequest: VNCoreMLRequest =
     {
         do {
@@ -66,8 +66,8 @@ class CameraController: UIViewController
                     {
                         print("the picture is real")
                         DispatchQueue.main.async { [self] in
-                            self.resultLabel.text = "Congratulations! You are real!"
-                            let transformedImage = self.textToImage(drawText: "Congratulations! You are real!", inImage: image!, atPoint: CGPoint(x: image!.size.width/2 - 100, y: image!.size.height - 100))
+                            self.resultLabel.text = "Congratulations! You exist!"
+                            let transformedImage = self.textToImage(drawText: "Congratulations! You exist!", inImage: image!, atPoint: CGPoint(x: image!.size.width/2 - 100, y: image!.size.height - 100))
                             self.imageView.image = transformedImage
                         }
                         self.isReal = true
@@ -77,8 +77,8 @@ class CameraController: UIViewController
                     {
                         print("the picture is not real")
                         DispatchQueue.main.async {
-                            self.resultLabel.text = "Unfortunately, you are not real"
-                            let transformedImage = self.textToImage(drawText: "Unfortunately, you are not real!", inImage: self.image!, atPoint: CGPoint(x: self.image!.size.width/2 - 100, y: self.image!.size.height - 100))
+                            self.resultLabel.text = "Unfortunately, you do not exist"
+                            let transformedImage = self.textToImage(drawText: "Unfortunately, you do not exist", inImage: self.image!, atPoint: CGPoint(x: self.image!.size.width/2 - 100, y: self.image!.size.height - 100))
                             self.imageView.image = transformedImage
                         }
                         self.isReal = false
@@ -94,6 +94,7 @@ class CameraController: UIViewController
         }
     }()
     
+    //MARK: VIEW APPEAR
     override func viewWillAppear(_ animated: Bool)
     {
         self.imageView.image = image
@@ -104,13 +105,16 @@ class CameraController: UIViewController
         resultLabel.textAlignment = .center
     }
     
+    //MARK: VIEW LOAD
     override func viewDidLoad()
     {
         super.viewDidLoad()
         print("Camera Controller")
         classifyImage(image!)
     }
-        
+    
+    
+    //MARK: CLASSIFICATION FUNCTION
     func classifyImage(_ image: UIImage)
     {
       // 1
@@ -133,6 +137,7 @@ class CameraController: UIViewController
       }
     }
     
+    //MARK: SEGUE FUNCTION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("sending picture")
@@ -144,6 +149,7 @@ class CameraController: UIViewController
         }
     }
     
+    //MARK: TEXT 2 IMAGE FUNCTION
     //https://stackoverflow.com/questions/28906914/how-do-i-add-text-to-an-image-in-ios-swift
     func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
         let textColor = UIColor.white
